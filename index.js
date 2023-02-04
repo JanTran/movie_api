@@ -15,6 +15,7 @@ let topBooks = [
     author: 'Stephanie Meyer'
   }
 ];
+let auth = require('./auth')(app);
 
 // GET requests
 app.get('/', (req, res) => {
