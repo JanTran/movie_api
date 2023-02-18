@@ -1,1 +1,1 @@
-
+{"_id":{"$oid":"63c9aaafa2cd9cc18afcc354"},"Username":"Hannah11","Password":"password2","Email":"hannah11@outlook.com","Birthday":{"$date":"1998-09-17T00:00:00Z"},"FavoriteMovies":[{"$oid":"63c960e2a2cd9cc18afcc351"},{"$oid":"63c93236a2cd9cc18afcc349"}],"__v":2}
