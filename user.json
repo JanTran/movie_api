@@ -1,1 +1,5 @@
-{"_id":{"$oid":"63b5d72998aa2bfb23efd1b5"},"Username":"diamondback33","Password":"goAli3orc","Email":"bob335@gmail.com","Birthday":{"$date":"1974-04-23"}}
+{"_id":{"$oid":"63b5d72998aa2bfb23efd1b5"},"Username":"diamondback33","Password":"goAli3orc","Email":"bob335@gmail.com","Birthdate":{"Birthday":"$date":"1974-04-23"}}
+{"_id":{"$oid":"63b5d76998aa2bfb23efd1b6"},"Username":"liusclues99","Password":"0rbit4lsh33p","Email":"sliugmail.com","Birthdate":{"Birthday":"$date":"2005-02-22"}}
+{"_id":{"$oid":"63b5d79e98aa2bfb23efd1b7"},"Username":"crazypills","Password":"j4h4m4hil","Email":"choi.brendon2001@gmail.com","Birthdate":{"Birthday":"$date":"2001-08-21"}}
+{"_id":{"$oid":"63b5d72998aa2bfb23efd1b8"},"Username":"jamiejaneson","Password":"l33tb0ll4","Email":"jaceman@gmail.com","Birthdate":{"Birthday":"$date":"1989-03-04"}}
+{"_id":{"$oid":"63b5d81598aa2bfb23efd1b9"},"Username":"jadeblade33","Password":"or10n3333","Email":"eura1999@gmail.com","Birthdate":{"Birthday":"$date":"1999-05-24"}}
