@@ -145,18 +145,6 @@ app.get('/users', passport.authenticate('jwt', { session: false }), (req, res) =
     });
 });
 
-/* GET a specific user by username at endpoint /users/:Username */
-app.get('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Users.findOne({ Username: req.params.Username })
-    .then((users) => {
-      res.status(201).json(users);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
-});
-
 /* POST: allows new users to register at endpoint /users */
 app.post('/users',
   [
