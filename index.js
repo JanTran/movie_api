@@ -287,3 +287,4 @@ app.use(cors({
     return callback(null, true);
   }
 }));
+mongoose.connect('mongodb://localhost:27017/dbname', { useNewUrlParser: true, useUnifiedTopology: true });
