@@ -39,3 +39,4 @@ app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.info(`Movie App is listening on port ${process.env.PORT}.`);
 });
+mongoose.connect('mongodb://localhost:27017/dbname', { useNewUrlParser: true, useUnifiedTopology: true });
