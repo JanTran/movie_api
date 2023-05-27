@@ -70,6 +70,12 @@ app.post('/users',
         res.status(500).send('Error: ' + error);
       });
   });
+// check the validation object for errors
+let errors = validationResult(req);
+
+if (!errors.isEmpty()) {
+  return res.status(422).json({ errors: errors.array() });
+}
 // Database connection
 dbConnection.connect();
 
