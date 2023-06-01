@@ -1,4 +1,3 @@
-const bodyParser = require("body-parser");
 const express = require("express");
 morgan = require("morgan");
 fs = require("fs");
