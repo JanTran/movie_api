@@ -17,8 +17,8 @@ dotenv.config({ path: "./config.env" });
 
 app.use(morgan("common"));
 app.use(express.static("public"));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 /**
  * Setting variable that imports CORS
@@ -95,7 +95,6 @@ app.get("/documentation", (req, res) => {
  */
 app.get("/movies", (req, res) => {
   Movies.find()
-    .populate("ImagePath")
     .then((movies) => {
       res.status(201).json(movies);
     })
@@ -117,7 +116,6 @@ app.get(
   "/movies/:title",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    console.log(req.user);
     Movies.findOne({ Title: req.params.title })
       .then((movie) => {
         res.status(200).json(movie);
