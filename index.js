@@ -1,55 +1,22 @@
 const express = require("express");
-morgan = require("morgan");
-fs = require("fs");
-path = require("path");
-methodOverride = require("method-override");
-uuid = require("uuid");
-app = express();
-(mongoose = require("mongoose")), (dotenv = require("dotenv"));
+const morgan = require("morgan");
+const fs = require("fs");
+const path = require("path");
+const app = express();
+const mongoose = require("mongoose");
 const { check, validationResult } = require("express-validator");
 
 const Models = require("./models.js");
 const Movies = Models.Movie;
 const Users = Models.User;
-const Genres = Models.Genre;
-const Directors = Models.Director;
-dotenv.config({ path: "./config.env" });
+const cors = require("cors");
+require("dotenv").config();
 
+app.use(cors());
 app.use(morgan("common"));
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-/**
- * Setting variable that imports CORS
- */
-const cors = require("cors");
-
-/**
- * Setting variable type array, that contains allowed origins for CORS policy
- */
-let allowedOrigins = [
-  "http://localhost:1234",
-  "http://localhost:3000",
-  "http://localhost:8080",
-  "http://localhost:4200",
-];
-
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-        // If a specific origin isn’t found on the list of allowed origins
-        let message =
-          "The CORS policy for this application doesn’t allow access from origin " +
-          origin;
-        return callback(new Error(message), false);
-      }
-      return callback(null, true);
-    },
-  })
-);
 
 let auth = require("./auth")(app);
 
@@ -59,10 +26,14 @@ let auth = require("./auth")(app);
 const passport = require("passport");
 require("./passport");
 
-mongoose.connect(process.env.CONNECTION_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose
+  .connect(process.env.CONNECTION_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("mongodb connected");
+  });
 
 /**
  * Creating '/' endpoint, that returns welcome message
@@ -394,18 +365,6 @@ app.delete(
       });
   }
 );
-
-/**
- * This function will handle errors
- */
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
-
-app.use(bodyParser.json());
-app.use(methodOverride());
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
