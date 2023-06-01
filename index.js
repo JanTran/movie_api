@@ -67,7 +67,8 @@ app.get("/documentation", (req, res) => {
 app.get("/movies", (req, res) => {
   Movies.find()
     .then((movies) => {
-      res.status(201).json(movies);
+      console.log(movies);
+      res.status(200).json(movies);
     })
     .catch((err) => {
       console.error(err);
@@ -87,7 +88,7 @@ app.get(
   "/movies/:title",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    Movies.findOne({ Title: req.params.title })
+    Movie.findOne({ Title: req.params.title })
       .then((movie) => {
         res.status(200).json(movie);
       })
